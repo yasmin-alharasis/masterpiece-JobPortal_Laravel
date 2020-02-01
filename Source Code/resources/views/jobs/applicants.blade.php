@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Applicants</h1>
+<div class="container-fluid">
+    <h1 class="row justify-content-center">Applicants</h1>
     <div class="row justify-content-center">
-        <div class="col-md-12">       
+        <div class="col-md-10">       
           @foreach($applicants as $applicant)
 
             <div class="card">

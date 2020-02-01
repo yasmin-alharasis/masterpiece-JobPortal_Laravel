@@ -83,7 +83,7 @@
                 <select class="form-control" name="type">
                     <option value="fulltime">Fulltime</option>
                     <option value="parttime">Parttime</option>
-                    <option value="casual">Casual</option>
+
                 </select>
             </div>
 

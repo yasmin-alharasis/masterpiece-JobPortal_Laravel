@@ -18,7 +18,6 @@
                     <option value="">-select-</option>
                     <option value="fulltime">fulltime</option>
                     <option value="parttime">parttime</option>
-                    <option value="casual">casual</option>
                 </select>
                 &nbsp;&nbsp;
         </div>
@@ -87,7 +86,7 @@
 
             @endforeach
             @else
-            No jobs found
+            <div class="alert alert-success">No jobs found</div>
             @endif
 
 
@@ -100,6 +99,8 @@
 
 </div>
 </div>
+<br>
+<br>
 
 
 @endsection

@@ -89,7 +89,7 @@
                 <select class="form-control" name="type">
                     <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
                     <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
-                    <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
+                    
                 </select>
             </div>
             <div class="form-group">

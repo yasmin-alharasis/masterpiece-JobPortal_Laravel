@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Profile;
 use App\Company;
+use App\Role;
 
 class User extends Authenticatable 
 {
@@ -49,5 +50,8 @@ class User extends Authenticatable
     }
     public function users(){
         return $this->belongsToMany(User::class)->withTimeStamps();
+    }
+    public function roles(){
+        return $this->belongsToMany(Role::class);
     }
 }

@@ -9,6 +9,7 @@ use App\Category;
 use App\Http\Requests\JobPostRequest;
 use Auth;
 use App\User;
+use App\Post;
 
 class JobController extends Controller
 {   
@@ -19,8 +20,9 @@ class JobController extends Controller
     public function index(){
         $jobs=Job::latest()->limit(10)->where('status',1)->get();
         $companies = Company::latest()->limit(12)->get();
+        $posts = Post::where('status',1)->get();
         $categories = Category::with('jobs')->get();
-        return view('welcome',compact('jobs','companies','categories'));
+        return view('welcome',compact('jobs','companies','categories','posts'));
     }
 
     public function show($id,Job $job){
@@ -94,13 +96,25 @@ class JobController extends Controller
 
     public function allJobs(Request $request){
 
-        $keyword = $request->get('title');
+        $search = $request->get('search');
+        $address1 = $request->get('address1');
+        if($search && $address1 ){
+            $jobs = Job::where('position','LIKE','%'.$search.'%')
+                ->orWhere('type','LIKE','%'.$search.'%')
+                ->orWhere('title','LIKE','%'.$search.'%')
+                ->orWhere('address','LIKE','%'.$address1.'%')
+                ->paginate(10);
+            return view('jobs.alljobs',compact('jobs'));
+            
+        }
+
+        $keyword = $request->get('position');
         $type = $request->get('type');
         $category = $request->get('category_id');
         $address = $request->get('address');
 
         if($keyword||$type||$category||$address){
-            $jobs = Job::where('title','LIKE','%'.$keyword.'%')
+            $jobs = Job::where('position','LIKE','%'.$keyword.'%')
                         ->orWhere('type',$type)
                         ->orWhere('category_id',$category)
                         ->orWhere('address',$address)
