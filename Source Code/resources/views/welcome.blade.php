@@ -26,13 +26,17 @@
 
               <a href="{{route('jobs.show',[$job->id,$job->slug])}}" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
                 <div class="company-logo blank-logo text-center text-md-left pl-3">
+                @if(!empty($job->company->logo))
                   <img src="{{asset('uploads/logo')}}/{{$job->company->logo}}" alt="Image" class="img-fluid mx-auto">
+                  @else
+              <img src="{{asset('avatar/man.jpg')}}" alt="Image" class="img-fluid mx-auto">
+                  @endif
                 </div>
                 <div class="job-details h-100">
                   <div class="p-3 align-self-center">
                     <h3>{{$job->position}}</h3>
                     <div class="d-block d-lg-flex">
-                      <div class="mr-3"><span class="icon-suitcase mr-1"></span> {{$job->company->cname}}</div>
+                    <div class="mr-3"><span class="icon-suitcase mr-1"></span> {{$job->company->cname}}</div>
                       <div class="mr-3"><span class="icon-room mr-1"></span> {{str_limit($job->address,20)}}</div>
                       <div><span class="icon-money mr-1"></span>{{$job->salary}}</div>
                     </div>

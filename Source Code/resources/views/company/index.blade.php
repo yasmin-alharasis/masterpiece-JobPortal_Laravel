@@ -2,20 +2,21 @@
 @section('content')
    <div class="album text-muted">
      <div class="container">
+     <br><br><br><br>
        <div class="row" id="app">
           <div class="title" style="margin-top: 20px;">
                 <h2></h2> 
           </div>
 
             @if(empty($company->cover_photo))
-                <img src="{{asset('hero-job-image.jpg')}}" style="width:100%">
+                <img src="{{asset('hero-job-image.jpg')}}" style="width:100% ">
             @else
-                <img src="{{asset('uploads/coverphoto/')}}/{{$company->cover_photo}}" style="width:100%">
+                <img src="{{asset('uploads/coverphoto/')}}/{{$company->cover_photo}}" style="width:70%">
             @endif
           <div class="col-lg-12"> 
             <div class="p-4 mb-8 bg-white">
             @if(empty($company->logo))
-                    <img src="{{asset('avatar/man.jpg')}}" width="100" />
+                    <img src="{{asset('avatar/man.jpg')}}" width="200" />
                 @else   
                     <img src="{{asset('uploads/logo')}}/{{$company->logo}}" width="100" />
                  @endif
